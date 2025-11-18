@@ -14,3 +14,4 @@ C:\Sidd all in one\CSE is Ez\STT\STTA4\Lab11\Multi-Control Event Interaction\obj
 C:\Sidd all in one\CSE is Ez\STT\STTA4\Lab11\Multi-Control Event Interaction\obj\Debug\net8.0-windows\Multi-Control Event Interaction.genruntimeconfig.cache
 C:\Sidd all in one\CSE is Ez\STT\STTA4\Lab11\Multi-Control Event Interaction\obj\Debug\net8.0-windows\ref\Multi-Control Event Interaction.dll
 C:\Sidd all in one\CSE is Ez\STT\STTA4\Lab11\Multi-Control Event Interaction\obj\Debug\net8.0-windows\Multi_Control_Event_Interaction.Form1.resources
+C:\Sidd all in one\CSE is Ez\STT\STTA4\Lab11\Multi-Control Event Interaction\obj\Debug\net8.0-windows\Multi-Control Event Interaction.sourcelink.json

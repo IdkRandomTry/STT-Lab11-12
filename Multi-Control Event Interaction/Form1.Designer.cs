@@ -2,15 +2,8 @@
 {
     partial class Form1
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             btnChangeColor = new Button();
@@ -33,9 +22,8 @@
             lblDisplay = new Label();
             cmbColors = new ComboBox();
             SuspendLayout();
-            // 
-            // btnChangeColor
-            // 
+            
+            // btnChangeColor 
             btnChangeColor.Location = new Point(50, 250);
             btnChangeColor.Name = "btnChangeColor";
             btnChangeColor.Size = new Size(150, 40);
@@ -43,9 +31,8 @@
             btnChangeColor.Text = "Change Color";
             btnChangeColor.UseVisualStyleBackColor = true;
             btnChangeColor.Click += btnChangeColor_Click;
-            // 
+            
             // btnChangeText
-            // 
             btnChangeText.Location = new Point(485, 250);
             btnChangeText.Name = "btnChangeText";
             btnChangeText.Size = new Size(150, 40);
@@ -53,19 +40,18 @@
             btnChangeText.Text = "Change Text";
             btnChangeText.UseVisualStyleBackColor = true;
             btnChangeText.Click += btnChangeText_Click;
-            // 
+            
             // lblDisplay
-            // 
-            lblDisplay.AutoSize = true;
+            lblDisplay.AutoSize = false;
             lblDisplay.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblDisplay.Location = new Point(200, 80);
+            lblDisplay.Location = new Point(50, 80);
             lblDisplay.Name = "lblDisplay";
-            lblDisplay.Size = new Size(314, 37);
+            lblDisplay.Size = new Size(585, 100);
             lblDisplay.TabIndex = 2;
             lblDisplay.Text = "Welcome to Events Lab";
-            // 
-            // cmbColors
-            // 
+            lblDisplay.TextAlign = ContentAlignment.MiddleCenter;
+
+            // cmbColors 
             cmbColors.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbColors.FormattingEnabled = true;
             cmbColors.Items.AddRange(new object[] { "Red", "Green", "Blue" });
@@ -73,9 +59,8 @@
             cmbColors.Name = "cmbColors";
             cmbColors.Size = new Size(150, 28);
             cmbColors.TabIndex = 3;
-            // 
-            // Form1
-            // 
+
+            // Form1            
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(685, 409);

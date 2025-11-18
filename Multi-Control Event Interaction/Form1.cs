@@ -10,10 +10,13 @@ namespace Multi_Control_Event_Interaction
         {
             InitializeComponent();
             
-            // Subscribe to custom events
-            ColorChangedEvent += OnColorChanged;
+            // Subscribe multiple methods to ColorChangedEvent (multicast behavior)
+            ColorChangedEvent += UpdateLabelColor;
+            ColorChangedEvent += ShowNotification;
+        
+            // Subscribe to TextChangedEvent
             TextChangedEvent += OnTextChanged;
-            
+          
             // Set default ComboBox selection
             cmbColors.SelectedIndex = 0;
         }
@@ -21,78 +24,90 @@ namespace Multi_Control_Event_Interaction
         // Event handler for btnChangeColor button click
         private void btnChangeColor_Click(object sender, EventArgs e)
         {
-  if (cmbColors.SelectedItem != null)
-{
-     Color selectedColor = GetColorFromString(cmbColors.SelectedItem.ToString());
+            if (cmbColors.SelectedItem != null)
+            {
+                string colorName = cmbColors.SelectedItem.ToString();
+                Color selectedColor = GetColorFromString(colorName);
  
-     // Raise the custom ColorChangedEvent
-    OnColorChangedEvent(new ColorChangedEventArgs(selectedColor));
-      }
+                // Raise the custom ColorChangedEvent with color name
+                OnColorChangedEvent(new ColorEventArgs(colorName, selectedColor));
+            }
             else
             {
-     MessageBox.Show("Please select a color from the ComboBox.", "No Color Selected", 
-         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-         }
+                MessageBox.Show("Please select a color from the ComboBox.", "No Color Selected", 
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         // Event handler for btnChangeText button click
         private void btnChangeText_Click(object sender, EventArgs e)
         {
-   string newText = DateTime.Now.ToString("dddd, MMMM dd, yyyy HH:mm:ss");
-            
- // Raise the custom TextChangedEvent
-     OnTextChangedEvent(new TextChangedEventArgs(newText));
+            string newText = DateTime.Now.ToString("dddd, MMMM dd, yyyy HH:mm:ss");
+      
+            // Raise the custom TextChangedEvent
+            OnTextChangedEvent(new TextChangedEventArgs(newText));
         }
 
         // Method to raise ColorChangedEvent
-        protected virtual void OnColorChangedEvent(ColorChangedEventArgs e)
-      {
-        ColorChangedEvent?.Invoke(this, e);
+        protected virtual void OnColorChangedEvent(ColorEventArgs e)
+        {
+            ColorChangedEvent?.Invoke(this, e);
         }
 
-  // Method to raise TextChangedEvent
+        // Method to raise TextChangedEvent
         protected virtual void OnTextChangedEvent(TextChangedEventArgs e)
         {
             TextChangedEvent?.Invoke(this, e);
         }
 
-  // Event handler for ColorChangedEvent
-        private void OnColorChanged(object sender, ColorChangedEventArgs e)
+        // Subscriber 1: Updates the label color
+        private void UpdateLabelColor(object sender, ColorEventArgs e)
         {
-            lblDisplay.ForeColor = e.NewColor;
+        lblDisplay.ForeColor = e.SelectedColor;
+        }
+
+        // Subscriber 2: Shows notification with selected color
+        private void ShowNotification(object sender, ColorEventArgs e)
+        {
+            MessageBox.Show($"Color changed to: {e.ColorName}", 
+            "Color Change Notification", 
+            MessageBoxButtons.OK, 
+            MessageBoxIcon.Information);
         }
 
         // Event handler for TextChangedEvent
-    private void OnTextChanged(object sender, TextChangedEventArgs e)
-      {
-            lblDisplay.Text = e.NewText;
+        private void OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+             lblDisplay.Text = e.NewText;
         }
 
-  // Helper method to convert string to Color
+        // Helper method to convert string to Color
         private Color GetColorFromString(string colorName)
-   {
+        {
             return colorName switch
-   {
-              "Red" => Color.Red,
-      "Green" => Color.Green,
- "Blue" => Color.Blue,
-    _ => Color.Black
+            {
+                "Red" => Color.Red,
+                "Green" => Color.Green,
+                "Blue" => Color.Blue,
+                _ => Color.Black
             };
         }
     }
 
     // Custom delegate declarations
-    public delegate void ColorChangedEventHandler(object sender, ColorChangedEventArgs e);
+    public delegate void ColorChangedEventHandler(object sender, ColorEventArgs e);
     public delegate void TextChangedEventHandler(object sender, TextChangedEventArgs e);
 
-    // Custom EventArgs for ColorChanged event
-    public class ColorChangedEventArgs : EventArgs
+    // Custom EventArgs for ColorChanged event - holds color name and Color object
+    public class ColorEventArgs : EventArgs
     {
-        public Color NewColor { get; set; }
+        public string ColorName { get; set; }
+        public Color SelectedColor { get; set; }
 
-        public ColorChangedEventArgs(Color color)
+        public ColorEventArgs(string colorName, Color color)
         {
-            NewColor = color;
+            ColorName = colorName;
+            SelectedColor = color;
         }
     }
 
@@ -103,7 +118,7 @@ namespace Multi_Control_Event_Interaction
 
         public TextChangedEventArgs(string text)
         {
-          NewText = text;
+            NewText = text;
         }
     }
 }

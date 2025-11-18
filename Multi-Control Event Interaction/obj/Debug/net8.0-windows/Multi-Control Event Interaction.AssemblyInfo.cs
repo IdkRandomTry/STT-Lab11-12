@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Multi-Control Event Interaction")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+486ce5d47e33e595aacb29fd01ff9f540c0d16c4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Multi-Control Event Interaction")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Multi-Control Event Interaction")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
