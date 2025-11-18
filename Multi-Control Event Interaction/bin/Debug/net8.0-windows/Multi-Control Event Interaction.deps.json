@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Multi-Control Event Interaction/1.0.0": {
+        "runtime": {
+          "Multi-Control Event Interaction.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Multi-Control Event Interaction/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

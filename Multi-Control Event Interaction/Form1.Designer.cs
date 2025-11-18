@@ -1,0 +1,99 @@
+﻿namespace Multi_Control_Event_Interaction
+{
+    partial class Form1
+    {
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            btnChangeColor = new Button();
+            btnChangeText = new Button();
+            lblDisplay = new Label();
+            cmbColors = new ComboBox();
+            SuspendLayout();
+            // 
+            // btnChangeColor
+            // 
+            btnChangeColor.Location = new Point(50, 250);
+            btnChangeColor.Name = "btnChangeColor";
+            btnChangeColor.Size = new Size(150, 40);
+            btnChangeColor.TabIndex = 0;
+            btnChangeColor.Text = "Change Color";
+            btnChangeColor.UseVisualStyleBackColor = true;
+            btnChangeColor.Click += btnChangeColor_Click;
+            // 
+            // btnChangeText
+            // 
+            btnChangeText.Location = new Point(485, 250);
+            btnChangeText.Name = "btnChangeText";
+            btnChangeText.Size = new Size(150, 40);
+            btnChangeText.TabIndex = 1;
+            btnChangeText.Text = "Change Text";
+            btnChangeText.UseVisualStyleBackColor = true;
+            btnChangeText.Click += btnChangeText_Click;
+            // 
+            // lblDisplay
+            // 
+            lblDisplay.AutoSize = true;
+            lblDisplay.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblDisplay.Location = new Point(200, 80);
+            lblDisplay.Name = "lblDisplay";
+            lblDisplay.Size = new Size(314, 37);
+            lblDisplay.TabIndex = 2;
+            lblDisplay.Text = "Welcome to Events Lab";
+            // 
+            // cmbColors
+            // 
+            cmbColors.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbColors.FormattingEnabled = true;
+            cmbColors.Items.AddRange(new object[] { "Red", "Green", "Blue" });
+            cmbColors.Location = new Point(268, 250);
+            cmbColors.Name = "cmbColors";
+            cmbColors.Size = new Size(150, 28);
+            cmbColors.TabIndex = 3;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(685, 409);
+            Controls.Add(cmbColors);
+            Controls.Add(lblDisplay);
+            Controls.Add(btnChangeText);
+            Controls.Add(btnChangeColor);
+            Name = "Form1";
+            Text = "EventPlayground";
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Button btnChangeColor;
+        private Button btnChangeText;
+        private Label lblDisplay;
+        private ComboBox cmbColors;
+    }
+}

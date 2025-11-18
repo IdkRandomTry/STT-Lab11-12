@@ -1,0 +1,109 @@
+namespace Multi_Control_Event_Interaction
+{
+    public partial class Form1 : Form
+    {
+        // Declare custom events
+        public event ColorChangedEventHandler ColorChangedEvent;
+        public event TextChangedEventHandler TextChangedEvent;
+
+        public Form1()
+        {
+            InitializeComponent();
+            
+            // Subscribe to custom events
+            ColorChangedEvent += OnColorChanged;
+            TextChangedEvent += OnTextChanged;
+            
+            // Set default ComboBox selection
+            cmbColors.SelectedIndex = 0;
+        }
+
+        // Event handler for btnChangeColor button click
+        private void btnChangeColor_Click(object sender, EventArgs e)
+        {
+  if (cmbColors.SelectedItem != null)
+{
+     Color selectedColor = GetColorFromString(cmbColors.SelectedItem.ToString());
+ 
+     // Raise the custom ColorChangedEvent
+    OnColorChangedEvent(new ColorChangedEventArgs(selectedColor));
+      }
+            else
+            {
+     MessageBox.Show("Please select a color from the ComboBox.", "No Color Selected", 
+         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+         }
+        }
+
+        // Event handler for btnChangeText button click
+        private void btnChangeText_Click(object sender, EventArgs e)
+        {
+   string newText = DateTime.Now.ToString("dddd, MMMM dd, yyyy HH:mm:ss");
+            
+ // Raise the custom TextChangedEvent
+     OnTextChangedEvent(new TextChangedEventArgs(newText));
+        }
+
+        // Method to raise ColorChangedEvent
+        protected virtual void OnColorChangedEvent(ColorChangedEventArgs e)
+      {
+        ColorChangedEvent?.Invoke(this, e);
+        }
+
+  // Method to raise TextChangedEvent
+        protected virtual void OnTextChangedEvent(TextChangedEventArgs e)
+        {
+            TextChangedEvent?.Invoke(this, e);
+        }
+
+  // Event handler for ColorChangedEvent
+        private void OnColorChanged(object sender, ColorChangedEventArgs e)
+        {
+            lblDisplay.ForeColor = e.NewColor;
+        }
+
+        // Event handler for TextChangedEvent
+    private void OnTextChanged(object sender, TextChangedEventArgs e)
+      {
+            lblDisplay.Text = e.NewText;
+        }
+
+  // Helper method to convert string to Color
+        private Color GetColorFromString(string colorName)
+   {
+            return colorName switch
+   {
+              "Red" => Color.Red,
+      "Green" => Color.Green,
+ "Blue" => Color.Blue,
+    _ => Color.Black
+            };
+        }
+    }
+
+    // Custom delegate declarations
+    public delegate void ColorChangedEventHandler(object sender, ColorChangedEventArgs e);
+    public delegate void TextChangedEventHandler(object sender, TextChangedEventArgs e);
+
+    // Custom EventArgs for ColorChanged event
+    public class ColorChangedEventArgs : EventArgs
+    {
+        public Color NewColor { get; set; }
+
+        public ColorChangedEventArgs(Color color)
+        {
+            NewColor = color;
+        }
+    }
+
+    // Custom EventArgs for TextChanged event
+    public class TextChangedEventArgs : EventArgs
+    {
+        public string NewText { get; set; }
+
+        public TextChangedEventArgs(string text)
+        {
+          NewText = text;
+        }
+    }
+}
